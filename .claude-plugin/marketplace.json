@@ -10,7 +10,9 @@
       "name": "green-tea-ui",
       "description": "Design system, motion, mẫu trang, viết chữ giao diện, nghiệm thu UI và bản đồ Việt Nam tương tác.",
       "source": "./plugins/green-tea-ui",
-      "category": "development"
+      "category": "development",
+      "version": "1.0.0",
+      "homepage": "https://github.com/hillnguyen528/green-tea-ui"
     }
   ]
 }

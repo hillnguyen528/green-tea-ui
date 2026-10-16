@@ -1,5 +1,9 @@
 # Green Tea UI
 
+[![Release](https://img.shields.io/github/v/release/hillnguyen528/green-tea-ui?label=release&color=2f6b45)](https://github.com/hillnguyen528/green-tea-ui/releases/latest)
+[![License: MIT](https://img.shields.io/badge/license-MIT-c89b45.svg)](LICENSE)
+[![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-18231b.svg)](https://claude.com/claude-code)
+
 Bộ skill cho [Claude Code](https://claude.com/claude-code) để dựng giao diện web cao cấp theo phong cách **tạp chí**: bố cục bất đối xứng, nhịp sáng tối, chuyển động chậm rãi có chủ đích, chữ tiếng Việt chuẩn dấu, đạt accessibility và hiệu năng trên mobile.
 
 Green Tea UI được rút ra từ quá trình dựng Trà Việt Số, một nền tảng trải nghiệm trà Việt, rồi viết lại thành bộ dùng chung cho mọi dự án. Stack tham chiếu: Next.js 16, Tailwind CSS 4, shadcn/ui, motion. Skill viết bằng tiếng Việt.
@@ -27,6 +31,8 @@ claude plugin install green-tea-ui@green-tea-ui
 Hoặc trong phiên Claude Code: `/plugin marketplace add hillnguyen528/green-tea-ui` rồi `/plugin install green-tea-ui@green-tea-ui`.
 
 Mở phiên Claude Code mới. Skill hiện với tiền tố plugin, ví dụ `green-tea-ui:green-tea-design-system`. Cập nhật: `claude plugin update green-tea-ui@green-tea-ui`.
+
+Không dùng git? Tải `green-tea-ui-skills-v<phiên bản>.zip` ở trang [Releases](https://github.com/hillnguyen528/green-tea-ui/releases/latest), giải nén vào `<dự-án>/.claude/skills/` hoặc `~/.claude/skills/`.
 
 ### Cách 2: chép vào dự án
 
