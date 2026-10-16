@@ -34,8 +34,6 @@ Hoặc gõ trong phiên Claude Code:
 
 Mở phiên Claude Code mới. Skill hiện với tên có tiền tố plugin, ví dụ `tvs-ui-skills:tvs-design-system`. Cập nhật về sau bằng `claude plugin update tvs-ui-skills@tra-viet-so-ui-skills`.
 
-> Repo đang để riêng tư. Máy cài cần đăng nhập GitHub có quyền đọc repo (ví dụ `gh auth login`), hoặc chuyển repo sang công khai.
-
 ### Cách 2: chép thẳng skill vào dự án
 
 ```bash
@@ -97,4 +95,7 @@ docs/ALL-UI-SKILLS.md                  cả 5 skill gộp một tệp để đ�
 
 - Skill mô tả quy tắc; `references/code.md` chứa phần mã cốt lõi, không phải toàn bộ component của Trà Việt Số.
 - Một số quy tắc gắn với phiên bản: Next.js 16 (`preload` thay `priority`, đọc `params` trong `Suspense` khi bật Cache Components), Tailwind CSS 4 (`@theme`, `@utility`), thư viện `motion`.
-- Repo chưa có giấy phép (LICENSE). Thêm giấy phép trước khi công khai nếu muốn người khác dùng lại.
+
+## Giấy phép
+
+[MIT](LICENSE). Bạn được dùng, sửa và phân phối lại bộ skill, kể cả cho mục đích thương mại, miễn giữ thông báo bản quyền.

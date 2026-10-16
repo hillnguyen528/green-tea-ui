@@ -5,5 +5,7 @@
   "author": {
     "name": "Hieu Nd"
   },
+  "repository": "https://github.com/hillnguyen528/tra-viet-so-ui-skills",
+  "license": "MIT",
   "keywords": ["ui", "ux", "design-system", "motion", "nextjs", "tailwind", "vietnamese"]
 }

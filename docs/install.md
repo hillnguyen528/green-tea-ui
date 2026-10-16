@@ -10,10 +10,7 @@ Hướng dẫn cài bộ skill và mọi thứ đi kèm trên một máy mới, 
 | Node.js | 20 trở lên | `node -v` |
 | pnpm | 9 trở lên | `pnpm -v` (cài: `npm install -g pnpm` hoặc `corepack enable`) |
 | Git | bất kỳ | `git --version` |
-| GitHub CLI | tùy chọn, cần nếu repo riêng tư | `gh auth status` |
 | Google Chrome | bất kỳ | dùng cho Lighthouse và chụp màn hình |
-
-Nếu repo này đang riêng tư, đăng nhập GitHub trước: `gh auth login`.
 
 ## 2. Cài bộ skill Trà Việt Số
 
