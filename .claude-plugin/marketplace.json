@@ -1,0 +1,16 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "tra-viet-so-ui-skills",
+  "description": "Bộ skill UI/UX cho giao diện web cao cấp, giàu chuyển động, tối ưu cho tiếng Việt.",
+  "owner": {
+    "name": "Hieu Nd"
+  },
+  "plugins": [
+    {
+      "name": "tvs-ui-skills",
+      "description": "Design system, motion, nghiệm thu UI, giọng viết và bản đồ tương tác, rút ra từ dự án Trà Việt Số.",
+      "source": "./plugins/tvs-ui-skills",
+      "category": "development"
+    }
+  ]
+}

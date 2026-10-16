@@ -1,0 +1,9 @@
+{
+  "name": "tvs-ui-skills",
+  "version": "1.0.0",
+  "description": "Bộ skill UI/UX rút ra từ dự án Trà Việt Số: design system, motion, nghiệm thu UI, giọng viết tiếng Việt và bản đồ tương tác.",
+  "author": {
+    "name": "Hieu Nd"
+  },
+  "keywords": ["ui", "ux", "design-system", "motion", "nextjs", "tailwind", "vietnamese"]
+}
