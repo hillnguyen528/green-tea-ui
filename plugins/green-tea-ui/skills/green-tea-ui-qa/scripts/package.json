@@ -1,0 +1,10 @@
+{
+  "name": "green-tea-ui-qa-scripts",
+  "private": true,
+  "type": "module",
+  "description": "Script nghiệm thu UI của skill green-tea-ui-qa. Cài: npm install trong thư mục này.",
+  "dependencies": {
+    "puppeteer-core": "^24.0.0",
+    "sharp": "^0.34.0"
+  }
+}

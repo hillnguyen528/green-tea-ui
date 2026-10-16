@@ -1,15 +1,15 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
-  "name": "tra-viet-so-ui-skills",
-  "description": "Bộ skill UI/UX cho giao diện web cao cấp, giàu chuyển động, tối ưu cho tiếng Việt.",
+  "name": "green-tea-ui",
+  "description": "Green Tea UI: bộ skill Claude Code cho giao diện web cao cấp, giàu chuyển động, tối ưu cho tiếng Việt.",
   "owner": {
     "name": "Hieu Nd"
   },
   "plugins": [
     {
-      "name": "tvs-ui-skills",
-      "description": "Design system, motion, nghiệm thu UI, giọng viết và bản đồ tương tác, rút ra từ dự án Trà Việt Số.",
-      "source": "./plugins/tvs-ui-skills",
+      "name": "green-tea-ui",
+      "description": "Design system, motion, mẫu trang, viết chữ giao diện, nghiệm thu UI và bản đồ Việt Nam tương tác.",
+      "source": "./plugins/green-tea-ui",
       "category": "development"
     }
   ]

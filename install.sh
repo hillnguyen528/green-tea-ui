@@ -6,7 +6,7 @@
 #   thêm --force                   ghi đè skill cùng tên đã có
 set -euo pipefail
 
-SOURCE="$(cd "$(dirname "$0")" && pwd)/plugins/tvs-ui-skills/skills"
+SOURCE="$(cd "$(dirname "$0")" && pwd)/plugins/green-tea-ui/skills"
 TARGET=""
 FORCE=0
 

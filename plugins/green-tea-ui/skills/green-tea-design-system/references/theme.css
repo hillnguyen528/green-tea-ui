@@ -1,0 +1,233 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@theme inline {
+  /* Theme Green Tea: đổi 8 giá trị dưới đây để đổi thương hiệu */
+  --color-ink: #18231b;
+  --color-leaf: #2f6b45;
+  --color-sprout: #8ccb7a;
+  --color-gold: #c89b45;
+  --color-mist: #eef3ea;
+  --color-paper: #faf8f2;
+  --color-clay: #b96d5a;
+  --color-night: #101513;
+
+  --font-sans: var(--font-be-vietnam), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+  --font-heading: var(--font-fraunces), ui-serif, Georgia, serif;
+
+  --ease-calm: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --animate-rise: rise 0.9s var(--ease-calm) both;
+  --animate-fade: fade 1.2s var(--ease-calm) both;
+  --animate-steam: steam 5s ease-in-out infinite;
+  --animate-pulse-ring: pulse-ring 2.4s ease-out infinite;
+  --animate-scroll-cue: scroll-cue 2.2s var(--ease-calm) infinite;
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(1.5rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes steam {
+    0% {
+      opacity: 0;
+      transform: translateY(8px) scaleY(0.9);
+    }
+    35% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-22px) scaleY(1.1);
+    }
+  }
+  @keyframes pulse-ring {
+    0% {
+      opacity: 0.7;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(2.6);
+    }
+  }
+  @keyframes scroll-cue {
+    0% {
+      transform: scaleY(0);
+      transform-origin: top;
+    }
+    50% {
+      transform: scaleY(1);
+      transform-origin: top;
+    }
+    51% {
+      transform: scaleY(1);
+      transform-origin: bottom;
+    }
+    100% {
+      transform: scaleY(0);
+      transform-origin: bottom;
+    }
+  }
+
+  /* Token của shadcn/ui, ánh xạ sang bảng màu ở :root */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  --background: #faf8f2;
+  --foreground: #18231b;
+  --card: #ffffff;
+  --card-foreground: #18231b;
+  --popover: #ffffff;
+  --popover-foreground: #18231b;
+  --primary: #2f6b45;
+  --primary-foreground: #faf8f2;
+  --secondary: #eef3ea;
+  --secondary-foreground: #18231b;
+  --muted: #eef3ea;
+  --muted-foreground: #56635a;
+  --accent: #eef3ea;
+  --accent-foreground: #18231b;
+  --destructive: #b3402e;
+  --border: #dfe5da;
+  --input: #dfe5da;
+  --ring: #2f6b45;
+  --radius: 0.875rem;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+  }
+  ::selection {
+    background: var(--color-gold);
+    color: var(--color-night);
+  }
+}
+
+/* Màu chữ nhấn tự đổi theo nền: đồng sẫm trên nền sáng, vàng sáng trên nền tối, để luôn đạt 4.5:1. */
+:root,
+[class~="bg-paper"],
+[class~="bg-mist"],
+[class~="bg-card"],
+[class*="bg-paper/9"] {
+  --highlight-text: #7a5c16;
+  --warm-text: #9a4f3d;
+}
+
+[class~="bg-night"],
+[class~="bg-ink"],
+[class*="bg-night/"] {
+  --highlight-text: #c89b45;
+  --warm-text: #d98f7c;
+}
+
+@utility text-highlight {
+  color: var(--highlight-text);
+}
+
+@utility text-warm {
+  color: var(--warm-text);
+}
+
+@utility container-page {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 80rem;
+  padding-inline: 1.25rem;
+  @media (width >= 48rem) {
+    padding-inline: 2.5rem;
+  }
+}
+
+@utility eyebrow {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+@utility display-hero {
+  font-family: var(--font-display);
+  font-size: clamp(3.25rem, 11vw, 9rem);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  font-weight: 400;
+}
+
+@utility display-section {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.5vw, 3.75rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  font-weight: 400;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

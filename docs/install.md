@@ -12,34 +12,36 @@ Hướng dẫn cài bộ skill và mọi thứ đi kèm trên một máy mới, 
 | Git | bất kỳ | `git --version` |
 | Google Chrome | bất kỳ | dùng cho Lighthouse và chụp màn hình |
 
-## 2. Cài bộ skill Trà Việt Số
+## 2. Cài Green Tea UI
 
 ### Dạng plugin
 
 ```bash
-claude plugin marketplace add hillnguyen528/tra-viet-so-ui-skills
-claude plugin install tvs-ui-skills@tra-viet-so-ui-skills
+claude plugin marketplace add hillnguyen528/green-tea-ui
+claude plugin install green-tea-ui@green-tea-ui
 claude plugin list
 ```
 
-`claude plugin list` phải có dòng `tvs-ui-skills@tra-viet-so-ui-skills`. Mặc định plugin cài cho người dùng hiện tại (mọi dự án). Mở phiên Claude Code mới, gõ `/` và tìm `tvs-` để thấy các skill.
+`claude plugin list` phải có dòng `green-tea-ui@green-tea-ui`. Mặc định plugin cài cho người dùng hiện tại (mọi dự án). Mở phiên Claude Code mới, gõ `/` và tìm `green-tea` để thấy 6 skill.
 
-Cập nhật: `claude plugin marketplace update tra-viet-so-ui-skills` rồi `claude plugin update tvs-ui-skills@tra-viet-so-ui-skills`, sau đó khởi động lại Claude Code.
+Cập nhật: `claude plugin marketplace update green-tea-ui` rồi `claude plugin update green-tea-ui@green-tea-ui`, sau đó khởi động lại Claude Code.
 
-Gỡ: `claude plugin uninstall tvs-ui-skills@tra-viet-so-ui-skills`.
+Gỡ: `claude plugin uninstall green-tea-ui@green-tea-ui`.
+
+Đã cài bản cũ `tvs-ui-skills@tra-viet-so-ui-skills`? Gỡ bản đó (`claude plugin uninstall tvs-ui-skills@tra-viet-so-ui-skills`, `claude plugin marketplace remove tra-viet-so-ui-skills`) rồi cài lại theo lệnh trên.
 
 ### Chép thủ công
 
 ```bash
-git clone https://github.com/hillnguyen528/tra-viet-so-ui-skills.git
-cd tra-viet-so-ui-skills
+git clone https://github.com/hillnguyen528/green-tea-ui.git
+cd green-tea-ui
 ./install.sh /đường/dẫn/dự-án     # vào <dự-án>/.claude/skills/
 ./install.sh --global            # vào ~/.claude/skills/
 ```
 
-Kiểm tra: thư mục đích có 5 thư mục `tvs-*`, mỗi thư mục có `SKILL.md`. Gỡ: xóa 5 thư mục đó.
+Kiểm tra: thư mục đích có 6 thư mục `green-tea-*`, mỗi thư mục có `SKILL.md`. Gỡ: xóa 6 thư mục đó.
 
-Nên chọn một trong hai cách. Cài cả hai thì Claude thấy hai bản của cùng skill (một bản có tiền tố `tvs-ui-skills:`).
+Nên chọn một trong hai cách. Cài cả hai thì Claude thấy hai bản của cùng skill (một bản có tiền tố `green-tea-ui:`).
 
 Khi chép skill vào thư mục dự án, commit cả `.claude/skills/` để cả nhóm dùng chung.
 
@@ -57,7 +59,7 @@ claude plugin marketplace add anthropics/claude-plugins-official
 claude plugin install vercel@claude-plugins-official
 ```
 
-Cung cấp các skill đã dùng khi dựng Trà Việt Số:
+Cung cấp các skill dùng cùng Green Tea UI:
 
 - `vercel:nextjs`: App Router, Server Components, metadata, `next/image`, `next/font`.
 - `vercel:shadcn`: khởi tạo và dùng shadcn/ui (`shadcn init -d`), theming.
@@ -70,7 +72,7 @@ Cung cấp các skill đã dùng khi dựng Trà Việt Số:
 claude plugin install frontend-design@claude-plugins-official
 ```
 
-Skill thiết kế giao diện của Anthropic. Dùng cùng `tvs-design-system`: skill này lo hướng thẩm mỹ chung, `tvs-design-system` đặt quy tắc cụ thể.
+Skill thiết kế giao diện của Anthropic. Dùng cùng `green-tea-design-system`: skill đó lo hướng thẩm mỹ chung, `green-tea-design-system` đặt quy tắc và token cụ thể.
 
 ### Trình duyệt cho nghiệm thu (nên có, chọn một)
 
@@ -80,7 +82,7 @@ claude plugin install chrome-devtools-mcp@claude-plugins-official
 claude plugin install playwright@claude-plugins-official
 ```
 
-`tvs-ui-qa` yêu cầu chạy app thật, chụp ở 360, 768, 1440 px và đọc console. Một trong hai plugin này cho Claude làm việc đó. Thay thế khác là tiện ích Claude in Chrome, hoặc tự chạy script với `puppeteer-core` trỏ tới Chrome đã cài.
+`green-tea-ui-qa` yêu cầu chạy app thật, chụp ở 360, 768, 1440 px và đọc console. Một trong hai plugin này cho Claude thao tác trình duyệt bằng tay. Việc quét hàng loạt đã có script sẵn trong skill (mục 4); tiện ích Claude in Chrome cũng dùng được.
 
 ### Skill shadcn chính thức (tùy chọn)
 
@@ -92,20 +94,29 @@ Lệnh hỏi chọn skill và nơi cài; chọn `shadcn`. Bổ sung cho `vercel:
 
 ### Có sẵn, không cần cài
 
-- `dataviz`: quy tắc vẽ biểu đồ, dùng cho biểu đồ radar hồ sơ vị.
+- `dataviz`: quy tắc vẽ biểu đồ (màu, contrast, tooltip, bảng thay thế).
 
-## 4. Kiểm tra hiệu năng và accessibility
+## 4. Script nghiệm thu
 
-`tvs-ui-qa` đặt mục tiêu Lighthouse mobile: Performance ≥ 85, Accessibility ≥ 90, SEO ≥ 90. Chạy trên bản production, không chạy trên `pnpm dev`:
+Skill `green-tea-ui-qa` có sẵn thư mục `scripts/`. Cài phụ thuộc một lần:
 
 ```bash
-pnpm build && pnpm start --port 3211
-CHROME_PATH="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
-  npx -y lighthouse http://localhost:3211/ --quiet --chrome-flags="--headless=new" \
-  --only-categories=performance,accessibility,seo --output=html --output-path=./lighthouse.html
+# Cài dạng plugin: thư mục skill nằm trong ~/.claude/plugins/cache/green-tea-ui/green-tea-ui/<phiên bản>/
+# Cài thủ công: <dự-án>/.claude/skills/green-tea-ui-qa/
+cd <thư-mục-skill-green-tea-ui-qa>/scripts && npm install
 ```
 
-Trên Linux hoặc Windows, đổi `CHROME_PATH` theo nơi cài Chrome. Điểm Performance dao động vài điểm giữa các lần đo trên máy cá nhân; đo vài lần và tắt dev server khi đo.
+Dùng:
+
+```bash
+node smoke.mjs --base http://localhost:3000 --routes /,/about --widths 360,1440
+node shots.mjs --base http://localhost:3000 --path / --width 360 --height 760 --mobile --out ./qa/home-360
+node contact-sheet.mjs --in ./qa/home-360 --mobile
+pnpm build && pnpm start --port 3211   # ở terminal khác
+./lighthouse.sh http://localhost:3211 / /about
+```
+
+Script tự tìm Chrome trên macOS, Linux, Windows; đặt `CHROME_PATH` nếu Chrome nằm chỗ khác. Mục tiêu Lighthouse mobile: Performance ≥ 85, Accessibility ≥ 90 (nên 100), SEO ≥ 90. Điểm Performance dao động vài điểm giữa các lần đo trên máy cá nhân; tắt dev server khi đo.
 
 ## 5. Khởi tạo một dự án mới theo cùng stack
 
@@ -116,4 +127,4 @@ pnpm dlx shadcn@latest init -d
 pnpm add motion lucide-react
 ```
 
-Sau đó mở Claude Code trong `my-app` và yêu cầu: "Đọc `references/code.md` của skill tvs-design-system và tvs-motion, dựng token màu, font và các primitive chuyển động cho dự án này."
+Sau đó mở Claude Code trong `my-app` và yêu cầu: "Dùng green-tea-design-system và green-tea-motion: chép `theme.css` vào `globals.css`, cài font có subset tiếng Việt, chép các primitive trong `references/` vào dự án."

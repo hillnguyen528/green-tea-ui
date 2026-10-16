@@ -1,101 +1,96 @@
-# Trà Việt Số UI Skills
+# Green Tea UI
 
-Bộ 5 skill cho [Claude Code](https://claude.com/claude-code) để dựng giao diện web cao cấp: bố cục kiểu tạp chí, chuyển động có chủ đích, chữ tiếng Việt chuẩn dấu, đạt accessibility và hiệu năng trên mobile.
+Bộ skill cho [Claude Code](https://claude.com/claude-code) để dựng giao diện web cao cấp theo phong cách **tạp chí**: bố cục bất đối xứng, nhịp sáng tối, chuyển động chậm rãi có chủ đích, chữ tiếng Việt chuẩn dấu, đạt accessibility và hiệu năng trên mobile.
 
-Các skill được rút ra trong quá trình dựng **Trà Việt Số**, nền tảng trải nghiệm trà Việt (Next.js 16, Tailwind CSS 4, shadcn/ui, motion). Skill viết bằng tiếng Việt.
+Green Tea UI được rút ra từ quá trình dựng Trà Việt Số, một nền tảng trải nghiệm trà Việt, rồi viết lại thành bộ dùng chung cho mọi dự án. Stack tham chiếu: Next.js 16, Tailwind CSS 4, shadcn/ui, motion. Skill viết bằng tiếng Việt.
 
-## Có gì trong bộ skill
+## Bộ skill
 
-| Skill | Dùng khi | Mang sang dự án khác |
+| Skill | Dùng khi | Kèm theo |
 |---|---|---|
-| `tvs-design-system` | Viết hoặc sửa bất kỳ UI nào: màu, chữ, layout, card, những điều không làm. Kèm `references/code.md` (globals.css, font, nút, tiêu đề section). | Giữ quy tắc, thay thương hiệu và bảng màu |
-| `tvs-motion` | Thêm animation, transition, micro-interaction. Kèm `references/code.md` (hằng số, Reveal, Parallax, Steam, Hero). | Dùng gần như nguyên |
-| `tvs-ui-qa` | Trước khi báo một trang là xong: 360px, accessibility, Lighthouse, SEO, các lỗi đã gặp thật. | Dùng gần như nguyên, sửa mục "Sản phẩm" |
-| `tvs-content-voice` | Viết chữ hiển thị: heading kể chuyện, microcopy, giới hạn nội dung sức khỏe. | Chỉ giữ khung |
-| `tvs-atlas-map` | Làm bản đồ Việt Nam tương tác (bắt buộc có Hoàng Sa, Trường Sa). | Khi cần bản đồ Việt Nam |
+| `green-tea-design-system` | Viết hoặc sửa bất kỳ UI nào; dựng theme cho dự án mới | `theme.css` (8 token, contrast tự động, keyframes), nút, tiêu đề section, form, bộ lọc trên URL, nút chia sẻ, xóa hai bước |
+| `green-tea-motion` | Thêm animation, transition, micro-interaction | Hằng số, `Reveal`, `Parallax`, loader `Steam`, provider reduced motion |
+| `green-tea-page-patterns` | Dựng trang mới, sắp xếp section, khi trang trông giống template | Khung trang chủ 8 nhịp, công thức section, trang con, trạng thái; ví dụ mã đầy đủ |
+| `green-tea-ux-writing` | Viết chữ giao diện tiếng Việt, dữ liệu mẫu, prompt AI | Mẫu hồ sơ giọng cho dự án |
+| `green-tea-ui-qa` | Trước khi báo một trang là xong | Script chụp trang, smoke test, ghép ảnh, Lighthouse; bảng lỗi đã gặp thật |
+| `green-tea-vietnam-map` | Cần bản đồ Việt Nam tương tác | Đường bờ biển Natural Earth, phép chiếu, component `VietnamMap` (có Hoàng Sa, Trường Sa) |
 
-## Cài nhanh
+## Cài đặt
 
-### Cách 1: cài dạng plugin (khuyên dùng)
-
-Repo này là một marketplace Claude Code. Chạy trong terminal:
-
-```bash
-claude plugin marketplace add hillnguyen528/tra-viet-so-ui-skills
-claude plugin install tvs-ui-skills@tra-viet-so-ui-skills
-```
-
-Hoặc gõ trong phiên Claude Code:
-
-```text
-/plugin marketplace add hillnguyen528/tra-viet-so-ui-skills
-/plugin install tvs-ui-skills@tra-viet-so-ui-skills
-```
-
-Mở phiên Claude Code mới. Skill hiện với tên có tiền tố plugin, ví dụ `tvs-ui-skills:tvs-design-system`. Cập nhật về sau bằng `claude plugin update tvs-ui-skills@tra-viet-so-ui-skills`.
-
-### Cách 2: chép thẳng skill vào dự án
+### Cách 1: plugin (khuyên dùng)
 
 ```bash
-git clone https://github.com/hillnguyen528/tra-viet-so-ui-skills.git
-cd tra-viet-so-ui-skills
-./install.sh /đường/dẫn/dự-án      # chỉ cho một dự án: <dự-án>/.claude/skills/
-./install.sh --global             # cho mọi dự án: ~/.claude/skills/
+claude plugin marketplace add hillnguyen528/green-tea-ui
+claude plugin install green-tea-ui@green-tea-ui
 ```
 
-Script không ghi đè skill đã có; thêm `--force` để ghi đè. Cách này cho phép bạn sửa skill ngay trong dự án, phù hợp khi chuyển bộ skill sang thương hiệu khác.
+Hoặc trong phiên Claude Code: `/plugin marketplace add hillnguyen528/green-tea-ui` rồi `/plugin install green-tea-ui@green-tea-ui`.
 
-Trên Windows không có bash: chép từng thư mục trong `plugins/tvs-ui-skills/skills/` vào `<dự-án>\.claude\skills\`.
+Mở phiên Claude Code mới. Skill hiện với tiền tố plugin, ví dụ `green-tea-ui:green-tea-design-system`. Cập nhật: `claude plugin update green-tea-ui@green-tea-ui`.
 
-## Cài thêm các skill và công cụ bổ trợ
+### Cách 2: chép vào dự án
 
-Bộ skill này đặt quy tắc thiết kế. Để Claude dựng và kiểm tra giao diện tốt như ở Trà Việt Số, cài thêm những thứ dưới đây. Hướng dẫn chi tiết, cách kiểm tra đã cài đúng và cách gỡ ở [docs/install.md](docs/install.md).
+```bash
+git clone https://github.com/hillnguyen528/green-tea-ui.git
+cd green-tea-ui
+./install.sh /đường/dẫn/dự-án      # vào <dự-án>/.claude/skills/
+./install.sh --global             # vào ~/.claude/skills/, cho mọi dự án
+```
+
+Không ghi đè skill đã có trừ khi thêm `--force`. Chọn cách này khi muốn sửa skill theo thương hiệu riêng và commit cùng dự án. Trên Windows: chép các thư mục trong `plugins/green-tea-ui/skills/` vào `<dự-án>\.claude\skills\`.
+
+### Skill và công cụ bổ trợ
 
 | Thành phần | Vai trò | Lệnh cài | Mức độ |
 |---|---|---|---|
-| Plugin `vercel` | Skill `nextjs`, `shadcn`, `react-best-practices`, `verification`, agent `performance-optimizer` | `claude plugin install vercel@claude-plugins-official` | Cần (dự án Next.js) |
-| Plugin `frontend-design` | Skill thiết kế giao diện của Anthropic, tránh cảm giác "AI template" | `claude plugin install frontend-design@claude-plugins-official` | Nên có |
-| Plugin `chrome-devtools-mcp` hoặc `playwright` | Cho Claude mở trình duyệt, chụp màn hình, đọc console để nghiệm thu | `claude plugin install chrome-devtools-mcp@claude-plugins-official` | Nên có |
-| Skill `shadcn` của shadcn/ui | Hướng dẫn chính thức về component và CLI shadcn | `npx skills add shadcn-ui/ui` | Tùy chọn |
-| Node.js 20+, pnpm, Google Chrome | Chạy dự án, Lighthouse, chụp màn hình | Xem docs | Cần |
+| Plugin `vercel` | Skill `nextjs`, `shadcn`, `react-best-practices`, `verification` | `claude plugin install vercel@claude-plugins-official` | Cần với Next.js |
+| Plugin `frontend-design` | Skill thiết kế giao diện của Anthropic | `claude plugin install frontend-design@claude-plugins-official` | Nên có |
+| Plugin `chrome-devtools-mcp` hoặc `playwright` | Cho Claude thao tác trình duyệt khi nghiệm thu | `claude plugin install chrome-devtools-mcp@claude-plugins-official` | Nên có |
+| Skill `shadcn` chính thức | Hướng dẫn component và CLI shadcn/ui | `npx skills add shadcn-ui/ui` | Tùy chọn |
+| Node.js 20+, pnpm, Google Chrome | Chạy dự án, script nghiệm thu, Lighthouse | Xem docs | Cần |
 
-Skill `dataviz` (biểu đồ) có sẵn trong Claude Code, không cần cài.
+Chi tiết, cách kiểm tra và gỡ: [docs/install.md](docs/install.md).
 
-## Dùng thế nào
+## Bắt đầu một dự án
 
-Skill tự được gọi khi việc bạn yêu cầu khớp với mô tả của skill. Có thể gọi rõ ràng:
+```bash
+pnpm create next-app@latest my-app --ts --tailwind --eslint --app --src-dir --import-alias "@/*" --use-pnpm --turbopack --yes
+cd my-app && pnpm dlx shadcn@latest init -d && pnpm add motion lucide-react
+```
+
+Rồi trong Claude Code:
 
 ```text
-Dùng skill tvs-design-system và tvs-motion, dựng trang chủ cho [dự án] với hero ảnh lớn, ba CTA và một tương tác trong 5 giây đầu.
+Dùng green-tea-design-system: chép theme.css vào globals.css, cài font Fraunces và Be Vietnam Pro với subset tiếng Việt, chép các primitive cần dùng. Sau đó dùng green-tea-page-patterns dựng trang chủ cho [mô tả sản phẩm].
 ```
 
 ```text
-Chạy checklist tvs-ui-qa cho trang /pricing ở 360px và 1440px, sửa mọi lỗi tìm thấy.
+Chạy green-tea-ui-qa cho các route /, /pricing, /blog ở 360 và 1440px, sửa mọi lỗi tìm thấy rồi báo điểm Lighthouse.
 ```
 
-## Dùng cho dự án khác
-
-Skill viết riêng cho Trà Việt Số (tên `tvs-*`, bảng màu trà, ví dụ về trà). Cài bằng cách 2 vào dự án mới rồi nhờ Claude chuyển đổi theo [docs/adapting.md](docs/adapting.md).
+Đổi màu, font, giọng cho thương hiệu khác: [docs/theming.md](docs/theming.md).
 
 ## Cấu trúc repo
 
 ```text
-.claude-plugin/marketplace.json        khai báo marketplace
-plugins/tvs-ui-skills/
-  .claude-plugin/plugin.json           khai báo plugin
-  skills/<tên-skill>/SKILL.md          nội dung skill
-  skills/<tên-skill>/references/       mã tham chiếu (design system, motion)
-install.sh                             cài thủ công
-docs/install.md                        cài đặt chi tiết và skill bổ trợ
-docs/adapting.md                       chuyển bộ skill sang dự án khác
-docs/ALL-UI-SKILLS.md                  cả 5 skill gộp một tệp để đọc nhanh
+.claude-plugin/marketplace.json           khai báo marketplace
+plugins/green-tea-ui/
+  .claude-plugin/plugin.json              khai báo plugin
+  skills/green-tea-*/SKILL.md             nội dung skill
+  skills/green-tea-*/references/          mã tham chiếu
+  skills/green-tea-ui-qa/scripts/         script nghiệm thu
+install.sh                                cài thủ công
+docs/install.md                           cài đặt chi tiết và skill bổ trợ
+docs/theming.md                           đổi thương hiệu
+docs/ALL-SKILLS.md                        cả 6 skill gộp một tệp
+CHANGELOG.md                              lịch sử thay đổi
 ```
 
 ## Giới hạn
 
-- Skill mô tả quy tắc; `references/code.md` chứa phần mã cốt lõi, không phải toàn bộ component của Trà Việt Số.
-- Một số quy tắc gắn với phiên bản: Next.js 16 (`preload` thay `priority`, đọc `params` trong `Suspense` khi bật Cache Components), Tailwind CSS 4 (`@theme`, `@utility`), thư viện `motion`.
+- Mã tham chiếu viết cho Next.js 16 (App Router, Cache Components), Tailwind CSS 4 và thư viện `motion`. Với phiên bản khác, kiểm tra lại các mục được ghi rõ trong skill.
+- `green-tea-page-patterns/references/examples.md` là mã nguyên văn từ Trà Việt Số, còn import dữ liệu riêng của dự án đó; dùng để học bố cục, không chép nguyên.
 
 ## Giấy phép
 
-[MIT](LICENSE). Bạn được dùng, sửa và phân phối lại bộ skill, kể cả cho mục đích thương mại, miễn giữ thông báo bản quyền.
+[MIT](LICENSE).

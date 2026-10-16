@@ -1,0 +1,11 @@
+{
+  "name": "green-tea-ui",
+  "version": "2.0.0",
+  "description": "Green Tea UI: design system, motion, mẫu trang, viết chữ giao diện tiếng Việt, nghiệm thu UI và bản đồ Việt Nam tương tác cho web app cao cấp.",
+  "author": {
+    "name": "Hieu Nd"
+  },
+  "repository": "https://github.com/hillnguyen528/green-tea-ui",
+  "license": "MIT",
+  "keywords": ["ui", "ux", "design-system", "motion", "nextjs", "tailwind", "vietnamese", "accessibility"]
+}
